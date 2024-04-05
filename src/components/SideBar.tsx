@@ -8,7 +8,7 @@ export const SideBar = () => {
             <SortByTitle />
 
             <div className="preference">
-                <h4>Filter</h4>
+                <h3>Filter</h3>
                 <div id="filterGroup">
                     <FilterByFavorites />
                 </div>
