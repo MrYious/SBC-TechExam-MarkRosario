@@ -4,6 +4,8 @@ export interface Recipe {
     name: string
     email: string
     title: string
+    description: string
+    ingredients: string
     instructions: string
     image: string
     dateAdded: string
