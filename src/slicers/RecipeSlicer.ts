@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface Recipe {
+export interface Recipe {
     name: string
     email: string
     title: string
