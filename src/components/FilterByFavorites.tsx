@@ -3,7 +3,7 @@ export const FilterByFavorites = () => {
     var data = true;
 
     return (
-        <div>
+        <div className="filterGroupItem">
             <span>Favorites?</span>
             <div className="customRadioGroupCheckBox">
                 <label htmlFor="favoriteYes">
