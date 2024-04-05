@@ -32,24 +32,27 @@ function Home() {
     }
   }
 
+  const filteredRecipeList = () => {
+    return sortRecipesBySortOrder(recipes, userPreference.sortOrder)
+    .filter((recipe) => {
+      if (userPreference.favorites.show) {
+        return userPreference.favorites.list.find(title => title.toLowerCase() === recipe.title.toLowerCase())
+      }
+      return true;
+    })
+  }
+
   return (
     <main>
       {recipes.length !== 0 ? <SideBar /> : <aside></aside>}
       <section>
-        <div id='recipeList' className={`${recipes.length === 0 && 'empty'}`}>
+        <div id='recipeList' className={`${(recipes.length === 0 || filteredRecipeList().length === 0) && 'empty'}`}>
           <NewRecipeButton />
           {
-            recipes.length === 0 ?
+            filteredRecipeList().length === 0 ?
               <h1 className='emptyRecipe'>No Record Found!</h1>
             :
-              sortRecipesBySortOrder(recipes, userPreference.sortOrder)
-              .filter((recipe) => {
-                if (userPreference.favorites.show) {
-                  return userPreference.favorites.list.find(title => title.toLowerCase() === recipe.title.toLowerCase())
-                } else {
-                  return true;
-                }
-              })
+              filteredRecipeList()
               .map((recipe) => <>
                 <RecipeItem recipe={recipe} key={recipe.title}/>
                 <div className='line'></div>
