@@ -22,10 +22,10 @@ function App() {
 
 
   return (
-    <>
+    <main className='app'>
       <NavBar />
       <Outlet />
-    </>
+    </main>
   )
 }
 

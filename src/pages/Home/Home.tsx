@@ -1,5 +1,6 @@
 import './Home.scss'
 
+import { NewRecipeButton } from '../../components/NewRecipeButton';
 import { RecipeItem } from '../../components/RecipeItem';
 import { SideBar } from '../../components/SideBar';
 import { useAppSelector } from '../../hooks/useReduxHooks';
@@ -16,10 +17,11 @@ function Home() {
   return (
     <main>
       {
-        recipes.length !== 0 && <SideBar />
+        recipes.length !== 0 ? <SideBar /> : <aside></aside>
       }
       <section>
         <div id='recipeList'>
+          <NewRecipeButton />
           {
             recipes.length === 0 ?
               <h1 className='emptyRecipe'>No Record Found!</h1>
