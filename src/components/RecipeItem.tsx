@@ -4,6 +4,16 @@ import iconStarOutlined from '../assets/star-outline.svg'
 
 export const RecipeItem = (props: {recipe: Recipe}) => {
 
+    const formatDate = (date: Date) => {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        const monthIndex = date.getMonth();
+        const day = date.getDate();
+        const year = date.getFullYear();
+
+        return `${months[monthIndex]} ${day}, ${year}`;
+    }
+
     return (
         <div className='recipeItem'>
             <div className='imageHolder'>
@@ -23,7 +33,7 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
                 <p className='seeMore'>See More</p>
                 <div className='footer'>
                     <p id='name'> Added by: {props.recipe.name}</p>
-                    <p id='dateAdded'>Date: {props.recipe.dateAdded}</p>
+                    <p id='dateAdded'>Date: {formatDate(new Date(props.recipe.dateAdded))}</p>
                 </div>
             </div>
         </div>
