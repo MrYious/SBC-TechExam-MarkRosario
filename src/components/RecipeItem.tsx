@@ -28,7 +28,7 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
                 </button>
             </div>
             <div className='recipeDetails'>
-                <h1 className='recipeTitle'>Hello</h1>
+                <h1 className='recipeTitle'>{props.recipe.title}</h1>
                 <p className='recipeDesc'>{props.recipe.description}</p>
                 <p className='seeMore'>See More</p>
                 <div className='footer'>
