@@ -12,7 +12,7 @@ interface Recipe {
 const initialState: Recipe[] = []
 
 const RecipeSlicer =  createSlice({
-    name: 'recipe',
+    name: 'recipes',
     initialState,
     reducers: {
         
