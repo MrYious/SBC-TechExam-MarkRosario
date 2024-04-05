@@ -3,6 +3,8 @@
         "name": "Mark Edison Rosario",
         "email": "sample@email.com",
         "title": "Placeholder1",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
+        "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "image": "./images/Placeholder1.jpg",
         "dateAdded": "Mar 04 2001"
@@ -11,6 +13,8 @@
         "name": "Mark Edison Rosario",
         "email": "sample@email.com",
         "title": "Placeholder2",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
+        "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "image": "./images/Placeholder2.jpg",
         "dateAdded": "Mar 04 2001"
@@ -19,6 +23,8 @@
         "name": "Mark Edison Rosario",
         "email": "sample@email.com",
         "title": "Placeholder3",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
+        "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "image": "./images/Placeholder3.jpg",
         "dateAdded": "Mar 04 2001"
@@ -27,6 +33,8 @@
         "name": "Mark Edison Rosario",
         "email": "sample@email.com",
         "title": "Placeholder4",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
+        "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "image": "./images/Placeholder4.jpg",
         "dateAdded": "Mar 04 2001"
@@ -35,6 +43,8 @@
         "name": "Mark Edison Rosario",
         "email": "sample@email.com",
         "title": "Placeholder5",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
+        "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "image": "./images/Placeholder5.jpg",
         "dateAdded": "Mar 04 2001"
@@ -43,6 +53,8 @@
         "name": "Mark Edison Rosario",
         "email": "sample@email.com",
         "title": "Placeholder6",
+        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
+        "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "image": "./images/Placeholder6.jpg",
         "dateAdded": "Mar 04 2001"
