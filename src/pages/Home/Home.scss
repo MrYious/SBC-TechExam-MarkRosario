@@ -83,6 +83,10 @@ main {
             height: 100%;
             position: relative;
 
+            &.empty {
+                justify-content: center;
+            }
+
             button.newRecipeButton {
                 border-radius: 50%;
                 background-color: #435490;
