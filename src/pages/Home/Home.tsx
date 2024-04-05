@@ -1,9 +1,18 @@
 import './Home.scss'
 
+import { SideBar } from '../../components/SideBar';
+
 function Home() {
 
   return (
-    <>Home</>
+    <main>
+      <SideBar />
+      <section>
+        <div id='recipeList'>
+          Recipe List
+        </div>
+      </section>
+    </main>
   )
 }
 
