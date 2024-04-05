@@ -1,11 +1,11 @@
 import './index.scss'
 
-import App from './App.tsx'
+import Home from './pages/Home/Home.tsx'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <Home />
   </React.StrictMode>,
 )
