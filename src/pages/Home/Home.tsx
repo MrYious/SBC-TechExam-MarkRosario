@@ -16,9 +16,7 @@ function Home() {
 
   return (
     <main>
-      {
-        recipes.length !== 0 ? <SideBar /> : <aside></aside>
-      }
+      {recipes.length !== 0 ? <SideBar /> : <aside></aside>}
       <section>
         <div id='recipeList' className={`${recipes.length === 0 && 'empty'}`}>
           <NewRecipeButton />
