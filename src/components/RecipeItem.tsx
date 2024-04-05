@@ -1,8 +1,19 @@
+import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
+
 import { Recipe } from '../slicers/RecipeSlicer'
 import iconStarFilled from '../assets/star-filled.svg'
 import iconStarOutlined from '../assets/star-outline.svg'
+import { toggleFavoriteRecipe } from '../slicers/UserPreferenceSlicer';
+import { useEffect } from 'react';
 
 export const RecipeItem = (props: {recipe: Recipe}) => {
+
+    const favorite = useAppSelector(state => state.userPreference.favorites);
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        console.log("Favorites", favorite.list);
+    }, [favorite.list])
 
     const formatDate = (date: Date) => {
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -14,13 +25,17 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
         return `${months[monthIndex]} ${day}, ${year}`;
     }
 
+    const handleToggleFavoriteRecipe = (title: string) => {
+        dispatch(toggleFavoriteRecipe(title));
+    }
+
     return (
         <div className='recipeItem'>
             <div className='imageHolder'>
                 <img src={props.recipe.image} alt="recipe image" id="cover" />
-                <button onClick={() => {}}>
+                <button onClick={()=>{handleToggleFavoriteRecipe(props.recipe.title)}}>
                     {
-                        false ?
+                        favorite.list.find(title => title.toLowerCase() === props.recipe.title.toLowerCase()) ?
                             <img src={iconStarFilled} alt="icon star filled " className='icon' />
                         :
                             <img src={iconStarOutlined} alt="icon star outlined" className='icon'/>

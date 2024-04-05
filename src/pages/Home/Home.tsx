@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 
 function Home() {
 
+  // TODO: Filter
+
   const recipes = useAppSelector((state) => state.recipes);
   const userPreference = useAppSelector((state) => state.userPreference);
 
@@ -41,6 +43,13 @@ function Home() {
               <h1 className='emptyRecipe'>No Record Found!</h1>
             :
               sortRecipesBySortOrder(recipes, userPreference.sortOrder)
+              .filter((recipe) => {
+                if (userPreference.favorites.show) {
+                  return userPreference.favorites.list.find(title => title.toLowerCase() === recipe.title.toLowerCase())
+                } else {
+                  return true;
+                }
+              })
               .map((recipe) => <>
                 <RecipeItem recipe={recipe} key={recipe.title}/>
                 <div className='line'></div>

@@ -26,12 +26,22 @@ const UserPreferenceSlicer =  createSlice({
     reducers: {
         updateSortOrder: (state, action: PayloadAction<SortOrder>) => {
             state.sortOrder = action.payload
+        },
+        toggleShowFavorites: (state) => {
+            state.favorites.show = !state.favorites.show
+        },
+        toggleFavoriteRecipe: (state, action: PayloadAction<string>) => {
+            if (state.favorites.list.find(title => title.toLowerCase() === action.payload.toLowerCase())) {
+                state.favorites.list = state.favorites.list.filter(title => title.toLowerCase() !== action.payload.toLowerCase() );
+            } else {
+                state.favorites.list.push(action.payload);
+            }
         }
     }
 });
 
 // Actions
-export const { updateSortOrder } = UserPreferenceSlicer.actions
+export const { updateSortOrder, toggleShowFavorites, toggleFavoriteRecipe } = UserPreferenceSlicer.actions
 
 // Reducer
 export default UserPreferenceSlicer.reducer
