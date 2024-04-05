@@ -1,9 +1,9 @@
-import './App.scss'
+import './Home.scss'
 
 function Home() {
 
   return (
-    <></>
+    <>Home</>
   )
 }
 
