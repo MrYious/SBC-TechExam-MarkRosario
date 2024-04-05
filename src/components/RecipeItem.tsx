@@ -12,12 +12,7 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
 
     const formatDate = (date: Date) => {
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-        const monthIndex = date.getMonth();
-        const day = date.getDate();
-        const year = date.getFullYear();
-
-        return `${months[monthIndex]} ${day}, ${year}`;
+        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
     }
 
     const handleToggleFavoriteRecipe = (title: string) => {
