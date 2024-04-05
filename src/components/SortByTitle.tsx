@@ -15,7 +15,7 @@ export const SortByTitle = () => {
     return (
         <div className="preference">
             <h4>Sort by Title</h4>
-            <select name="sortTitle" id="sortTitle" value={sortOrder} onChange={handleSelectSortOrder}>
+            <select name="sortTitle" id="sortTitle" value={sortOrder ?? ''} onChange={handleSelectSortOrder}>
                 <option disabled value={''} >Select</option>
                 <option value="ASC">ASC</option>
                 <option value="DESC">DESC</option>
