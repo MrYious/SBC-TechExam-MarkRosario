@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface Recipe {
     name: string
@@ -15,12 +15,12 @@ const RecipeSlicer =  createSlice({
     name: 'recipes',
     initialState,
     reducers: {
-        
+        loadRecipes: (_state, action: PayloadAction<Recipe[]>) => action.payload,
     }
 });
 
 // Actions
-export const { } = RecipeSlicer.actions
+export const { loadRecipes } = RecipeSlicer.actions
 
 // Reducer
 export default RecipeSlicer.reducer
