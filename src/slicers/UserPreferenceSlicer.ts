@@ -1,13 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-type SortOrder = "ASC" | "DESC" | ""
+export type SortOrder = "ASC" | "DESC" | ""
 
 export interface Preference {
     favorites: {
         show: boolean
         list: string[]
     }
-    sort: SortOrder
+    sortOrder: SortOrder
     searchString: string
 }
 
@@ -16,7 +16,7 @@ const initialState: Preference = {
         show: false,
         list: []
     },
-    sort: "",
+    sortOrder: "",
     searchString: "",
 }
 
@@ -24,12 +24,14 @@ const UserPreferenceSlicer =  createSlice({
     name: 'userPreference',
     initialState,
     reducers: {
-        
+        updateSortOrder: (state, action: PayloadAction<SortOrder>) => {
+            state.sortOrder = action.payload;
+        }
     }
 });
 
 // Actions
-export const { } = UserPreferenceSlicer.actions
+export const { updateSortOrder } = UserPreferenceSlicer.actions
 
 // Reducer
 export default UserPreferenceSlicer.reducer
