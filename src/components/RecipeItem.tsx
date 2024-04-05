@@ -4,26 +4,33 @@ import { Recipe } from '../slicers/RecipeSlicer'
 import iconStarFilled from '../assets/star-filled.svg'
 import iconStarOutlined from '../assets/star-outline.svg'
 import { toggleFavoriteRecipe } from '../slicers/UserPreferenceSlicer';
+import { useNavigate } from 'react-router-dom';
 
 export const RecipeItem = (props: {recipe: Recipe}) => {
 
     const favorite = useAppSelector(state => state.userPreference.favorites);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const formatDate = (date: Date) => {
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
     }
 
-    const handleToggleFavoriteRecipe = (title: string) => {
+    const handleToggleFavoriteRecipe = (e: React.MouseEvent<HTMLButtonElement> ,title: string) => {
+        e.stopPropagation();
         dispatch(toggleFavoriteRecipe(title));
     }
 
+    const handleOpenRecipe = (title: string) => {
+        navigate("recipe/" + title)
+    }
+
     return (
-        <div className='recipeItem'>
+        <div className='recipeItem' onClick={()=>{handleOpenRecipe(props.recipe.title)}}>
             <div className='imageHolder'>
                 <img src={props.recipe.image} alt="recipe image" id="cover" />
-                <button onClick={()=>{handleToggleFavoriteRecipe(props.recipe.title)}}>
+                <button onClick={(e)=>{handleToggleFavoriteRecipe(e, props.recipe.title)}}>
                     {
                         favorite.list.find(title => title.toLowerCase() === props.recipe.title.toLowerCase()) ?
                             <img src={iconStarFilled} alt="icon star filled " className='icon' />
