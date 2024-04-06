@@ -1,5 +1,6 @@
 import './Recipe.scss'
 
+import { Recipe as RecipeInterface, updateRecipe } from '../../slicers/RecipeSlicer';
 import { loadError, loadRecipe } from '../../slicers/SelectRecipeSlicer';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHooks';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -13,7 +14,7 @@ function Recipe() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const recipeList = useAppSelector(state => state.recipes);
-  const {recipe, loading, error} = useAppSelector(state => state.selectRecipe);
+  const {loading, error} = useAppSelector(state => state.selectRecipe);
 
   useEffect(() => {
     const selectedRecipe = recipeList.find(recipe => recipe.title.toLowerCase() === title?.toLowerCase());
@@ -24,6 +25,10 @@ function Recipe() {
       dispatch(loadError());
     }
   }, [recipeList])
+
+  const handleSave = (recipe: RecipeInterface) => {
+		dispatch(updateRecipe(recipe));
+	}
 
   if (loading) {
     return (
@@ -44,7 +49,7 @@ function Recipe() {
 
   return (
     <main id='recipe'>
-      <RecipePageForm recipe={recipe} newRecipe={false} />
+      <RecipePageForm newRecipe={false} handleSave={handleSave}/>
     </main>
   )
 }
