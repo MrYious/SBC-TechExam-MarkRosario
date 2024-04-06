@@ -70,7 +70,5 @@ export const {
     updateValidation
 } = SelectRecipeSlicer.actions
 
-export type UpdateSelectedRecipeAction = typeof updateSelectedRecipe
-
 // Reducer
 export default SelectRecipeSlicer.reducer
