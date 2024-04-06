@@ -34,7 +34,9 @@ export const CustomFormInput = (props: FormInput) => {
     }
 
     const handleValidateInput = (e: React.FocusEvent<HTMLInputElement>) => {
-        if (e.target.value.length === 0) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const value = e.target.value;
+        if (value.length === 0 || (props.type === 'email' && !emailRegex.test(value))) {
             setState('Error');
         } else {
             setState('Success')
