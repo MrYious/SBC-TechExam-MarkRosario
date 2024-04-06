@@ -15,7 +15,6 @@ export const Toast = (props: {toast: ToastInteface}) => {
         if (props.toast.show) {
             setTimeout(()=>{
                 dispatch(closeToast());
-                console.log("close toast");
             }, 4000)
         }
     }, [props.toast])
