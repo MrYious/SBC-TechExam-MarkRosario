@@ -8,6 +8,7 @@ import { CustomFormInput } from './CustomFormInput';
 import { CustomFormTextArea } from './CustomFormTextArea';
 import { Toast } from './Toast';
 import iconBackArrow from '../assets/backArrow.svg';
+import imgPlaceholder from '../assets/placeholderImage.svg'
 import { useNavigate } from "react-router-dom";
 
 interface RecipeFormProps {
@@ -29,6 +30,8 @@ export const RecipePageForm = (props: RecipeFormProps) => {
         var newToast: ToastInterface;
         if(executeValidateAllInput(recipe)){
             props.handleSave(recipe)
+            if (props.newRecipe)
+                return navigate("/")
             newToast = {
                 show: true,
                 message: 'Success: Recipe Saved',
@@ -98,7 +101,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 Back
             </button>
             <button type='button' onClick={()=>{}} id='recipeImage'>
-                <img src={recipe.image} alt="recipe image" />
+                <img src={recipe.image ? recipe.image : imgPlaceholder } alt="recipe image" />
             </button>
         </section>
         <section id='rightInputContainer'>
