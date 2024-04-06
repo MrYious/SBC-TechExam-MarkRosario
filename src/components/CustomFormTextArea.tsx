@@ -38,7 +38,7 @@ export const CustomFormTextArea = (props: FormTextArea) => {
                     rows={props.rows}
                     onBlur={handleValidateInput}
                 />
-                {state && displayState()}
+                {state === 'Initial' ?? displayState()}
             </div>
         </div>
     )

@@ -38,7 +38,7 @@ export const CustomFormInput = (props: FormInput) => {
                     readOnly={props.readonly}
                     onBlur={handleValidateInput}
                 />
-                {state && displayState()}
+                {state === 'Initial' ?? displayState()}
             </div>
         </div>
     )
