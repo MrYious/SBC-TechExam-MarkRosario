@@ -10,7 +10,7 @@ interface FormTextArea {
     rows: number
 }
 
-export const CustomFormInput = (props: FormTextArea) => {
+export const CustomFormTextArea = (props: FormTextArea) => {
 
     return (
         <div className='formInput'>
@@ -21,6 +21,7 @@ export const CustomFormInput = (props: FormTextArea) => {
                     value={props.value}
                     disabled={props.disabled}
                     rows={props.rows}
+                    
                 />
                 <img
                     src={iconError}
