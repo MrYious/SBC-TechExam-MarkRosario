@@ -1,6 +1,7 @@
 import './Home.scss'
 
 import { NewRecipeButton } from '../../components/NewRecipeButton';
+import React from 'react';
 import { RecipeItem } from '../../components/RecipeItem';
 import { SideBar } from '../../components/SideBar';
 import { useAppSelector } from '../../hooks/useReduxHooks';
@@ -51,10 +52,10 @@ function Home() {
               <h1 className='emptyRecipe'>No Record Found!</h1>
             :
               filteredRecipeList()
-              .map((recipe) => <>
-                <RecipeItem recipe={recipe} key={recipe.title}/>
-                <div className='line' key={recipe.title + 'line'}></div>
-              </>)
+              .map((recipe) => <React.Fragment key={recipe.title}>
+                <RecipeItem recipe={recipe} />
+                <div className='line'></div>
+              </React.Fragment>)
           }
         </div>
       </section>
