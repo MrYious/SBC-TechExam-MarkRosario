@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
 import { Recipe } from '../slicers/RecipeSlicer'
 import iconStarFilled from '../assets/star-filled.svg'
 import iconStarOutlined from '../assets/star-outline.svg'
+import imgPlaceholder from '../assets/placeholderImage.svg'
 import { toggleFavoriteRecipe } from '../slicers/UserPreferenceSlicer';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,7 +30,7 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
     return (
         <div className='recipeItem' onClick={()=>{handleOpenRecipe(props.recipe.title)}}>
             <div className='imageHolder'>
-                <img src={props.recipe.image} alt="recipe image" id="cover" />
+                <img src={props.recipe.image || imgPlaceholder} alt="recipe image" id="cover" />
                 <button onClick={(e)=>{handleToggleFavoriteRecipe(e, props.recipe.title)}}>
                     {
                         favorite.list.find(title => title.toLowerCase() === props.recipe.title.toLowerCase()) ?

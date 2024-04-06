@@ -101,7 +101,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 Back
             </button>
             <button type='button' onClick={()=>{}} id='recipeImage'>
-                <img src={recipe.image ? recipe.image : imgPlaceholder } alt="recipe image" />
+                <img src={recipe.image || imgPlaceholder} alt="recipe image" />
             </button>
         </section>
         <section id='rightInputContainer'>
