@@ -112,9 +112,12 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 <img src={iconBackArrow} alt="icon back arrow" className="icon"/>
                 Back
             </button>
-            <button type='button' onClick={()=>{}} id='recipeImage'>
-                <img src={recipe.image || imgPlaceholder} alt="recipe image" />
-            </button>
+            <button
+                type='button'
+                onClick={()=>{}}
+                id='recipeImageHolder'
+                style={{backgroundImage: `url('${recipe.image || imgPlaceholder}')`}}
+            />
         </section>
         <section id='rightInputContainer'>
             <CustomFormInput
