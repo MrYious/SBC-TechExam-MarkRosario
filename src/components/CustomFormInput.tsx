@@ -37,6 +37,7 @@ export const CustomFormInput = (props: FormInput) => {
                     value={props.value}
                     readOnly={props.readonly}
                     onBlur={handleValidateInput}
+                    onFocus={()=>setState('Initial')}
                 />
                 {state === 'Initial' ?? displayState()}
             </div>

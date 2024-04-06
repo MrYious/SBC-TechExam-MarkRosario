@@ -37,6 +37,7 @@ export const CustomFormTextArea = (props: FormTextArea) => {
                     readOnly={props.readonly}
                     rows={props.rows}
                     onBlur={handleValidateInput}
+                    onFocus={()=>setState('Initial')}
                 />
                 {state === 'Initial' ?? displayState()}
             </div>
