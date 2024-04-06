@@ -127,7 +127,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 placeholder='Text field data'
                 label='TITLE'
                 type={"text"}
-                readonly
+                readonly={!props.newRecipe}
             />
             <CustomFormTextArea
                 objKey={'description'}
