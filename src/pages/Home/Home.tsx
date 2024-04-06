@@ -11,10 +11,10 @@ function Home() {
   const recipes = useAppSelector((state) => state.recipes);
   const userPreference = useAppSelector((state) => state.userPreference);
 
-  const sortRecipesBySortOrder = (unsortedList: typeof recipes, order: typeof userPreference.sortOrder) => {
-    if(order) {
+  const sortRecipesBySortOrder = (unsortedList: typeof recipes, order: typeof userPreference.sort) => {
+    if(order.byTitle) {
       const sortedList = [...unsortedList].sort((a, b) => {
-        if (order === 'ASC') {
+        if (order.byTitle === 'ASC') {
           return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
         } else {
           return b.title.toLowerCase().localeCompare(a.title.toLowerCase())
@@ -27,7 +27,7 @@ function Home() {
   }
 
   const filteredRecipeList = () => {
-    return sortRecipesBySortOrder(recipes, userPreference.sortOrder)
+    return sortRecipesBySortOrder(recipes, userPreference.sort)
     .filter((recipe) => {
       if (userPreference.favorites.show) {
         return userPreference.favorites.list.find(title => title.toLowerCase() === recipe.title.toLowerCase())
