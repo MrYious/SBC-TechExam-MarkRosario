@@ -64,17 +64,18 @@ export const RecipePageForm = (props: RecipeFormProps) => {
     }
 
     const showValidations = () => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        var isValidEmail = emailRegex.test(recipe.email);
+
+        var isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        var checkState = (bool: boolean | string) => bool ? "Success" : 'Error'
 
         const newValidation: RecipeValidation = {
             ...validation,
-            name: recipe.name ? 'Success' : 'Error',
-            email: recipe.email && isValidEmail ? 'Success' : 'Error',
-            title: recipe.title && isUniqueTitle(recipe.title) ? 'Success' : 'Error',
-            description: recipe.description ? 'Success' : 'Error',
-            ingredients: recipe.ingredients ? 'Success' : 'Error',
-            instructions: recipe.instructions ? 'Success' : 'Error',
+            name: checkState(recipe.name),
+            email: checkState(recipe.email && isValidEmail(recipe.email)),
+            title: checkState((!props.newRecipe || (props.newRecipe && recipe.title && isUniqueTitle(recipe.title)))),
+            description:checkState(recipe.description),
+            ingredients: checkState(recipe.ingredients),
+            instructions: checkState(recipe.instructions),
             // image: 'Initial',
         }
         dispatch(updateValidation(newValidation));
@@ -85,7 +86,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
         var isValidEmail = emailRegex.test(recipe.email);
 
         if (
-            isUniqueTitle(recipe.title)
+            (!props.newRecipe || (props.newRecipe && isUniqueTitle(recipe.title)))
             && recipe.title
             && recipe.name
             && recipe.email
@@ -105,7 +106,8 @@ export const RecipePageForm = (props: RecipeFormProps) => {
 
     return (<form onSubmit={handleSubmit}>
         {
-            toast.show && <Toast toast={toast}/>
+            toast.show
+            && <Toast toast={toast}/>
         }
         <section id='leftImageContainer'>
             <button onClick={returnHomePage} id='goBackButton'>
@@ -176,7 +178,8 @@ export const RecipePageForm = (props: RecipeFormProps) => {
             />
             <div className='buttonGroup'>
                 {
-                    !props.newRecipe && <CustomFormButton text='Delete' type='delete' action={handleDelete}/>
+                    !props.newRecipe
+                    && <CustomFormButton text='Delete' type='delete' action={handleDelete}/>
                 }
                 <CustomFormButton text='Save' type='save' action={()=>{}}/>
             </div>
