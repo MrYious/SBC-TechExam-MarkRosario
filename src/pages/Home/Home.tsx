@@ -41,7 +41,7 @@ function Home() {
   }
 
   return (
-    <main>
+    <main id='home'>
       {recipes.length !== 0 ? <SideBar /> : <aside></aside>}
       <section>
         <div id='recipeList' className={`${(recipes.length === 0 || filteredRecipeList().length === 0) && 'empty'}`}>
