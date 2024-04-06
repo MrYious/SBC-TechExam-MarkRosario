@@ -1,8 +1,5 @@
 main#recipe {
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 2.5fr;
-    box-sizing: border-box;
     overflow: hidden;
 
     &.loading, &.error {
@@ -23,11 +20,112 @@ main#recipe {
         }
     }
 
-    section#leftImageContainer {
-        background-color: blue;
-    }
+    form {
+        display: grid;
+        grid-template-columns: 1fr 2.5fr;
+        box-sizing: border-box;
+        overflow: hidden;
+        height: 100%;
+        padding: 1.2rem;
 
-    section#rightInputContainer {
-        background-color: green;
+        section#leftImageContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.2rem;
+
+            button {
+                display: flex;
+                outline: none;
+                border: none;
+                cursor: pointer;
+
+                &#goBackButton {
+                    background-color: rgba(255, 255, 255, 0);
+                    font-size: 1.2rem;
+
+                    img.icon {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                    }
+                }
+
+                &#recipeImage {
+                    background-color: rgba(255, 255, 255, 0);
+                    width: 100%;
+                    border: 1px solid black;
+                    padding: 0;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        section#rightInputContainer {
+            padding: 0 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .formInput {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                label {
+                    letter-spacing: 2px;
+                }
+
+                div.customInput {
+                    border: 1px solid #A6A6A6;
+                    background-color: #FFFFFF;
+                    display: flex;
+
+                    input, textarea {
+                        border: none;
+                        background-color: rgba(255, 255, 255, 0);
+                        outline: none;
+                        width: 100%;
+                        padding: 7px;
+                        font-size: 1rem;
+                    }
+
+                    img {
+                        padding: 7px;
+                    }
+                }
+            }
+
+            .buttonGroup {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 1rem;
+                gap: 1rem;
+
+                button.formButton {
+                    padding: 6px 0px;
+                    box-sizing: border-box;
+                    width: 6.5rem;
+                    color: white;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    border: none;
+                    box-shadow: 0px 1px 5px 0px #00000033;
+                    box-shadow: 0px 3px 1px 0px #0000001F;
+                    box-shadow: 0px 2px 2px 0px #00000024;
+                    font-size: 1.05rem;
+
+                    &.save {
+                        background: #435490;
+                    }
+
+                    &.delete {
+                        background: #EE6400;
+                    }
+                }
+            }
+        }
     }
 }
