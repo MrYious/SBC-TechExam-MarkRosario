@@ -1,6 +1,5 @@
-import { State, updateSelectedRecipe } from "../slicers/SelectRecipeSlicer"
+import { State, updateSelectedRecipe, updateValidation } from "../slicers/SelectRecipeSlicer"
 import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
-import { useEffect, useState } from "react"
 
 import iconError from "../assets/inputError.svg"
 import iconSuccess from "../assets/inputSuccess.svg"
@@ -17,35 +16,32 @@ interface FormInputProps {
 }
 
 export const CustomFormInput = (props: FormInputProps) => {
-    const [state, setState] = useState<State>('Initial')
-    const { recipe } = useAppSelector(state => state.selectRecipe)
+    const { recipe, validation } = useAppSelector(state => state.selectRecipe)
     const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        if (props.value.length === 0) {
-          setState('Warning')
-        }
-    }, [props.value])
 
     const displayState = () => {
         return <img
-            src={state === 'Success' ? iconSuccess : state === 'Warning' ? iconWarning : iconError }
+            src={props.state === 'Success' ? iconSuccess : props.state === 'Warning' ? iconWarning : iconError }
             alt="icon state"
         />
+    }
+
+    const handleUpdateValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(updateSelectedRecipe({...recipe, [props.objKey]: e.target.value}))
     }
 
     const handleValidateInput = (e: React.FocusEvent<HTMLInputElement>) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const value = e.target.value;
         if (value.length === 0 || (props.type === 'email' && !emailRegex.test(value))) {
-            setState('Error');
+            dispatch(updateValidation({...validation, [props.objKey]: 'Warning'}))
         } else {
-            setState('Success')
+            dispatch(updateValidation({...validation, [props.objKey]: 'Success'}))
         }
     }
 
-    const handleUpdateValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(updateSelectedRecipe({...recipe, [props.objKey]: e.target.value}))
+    const handleFocusInput = (_e: React.FocusEvent<HTMLInputElement>) => {
+        dispatch(updateValidation({...validation, [props.objKey]: 'Initial'}))
     }
 
     return (
@@ -58,11 +54,11 @@ export const CustomFormInput = (props: FormInputProps) => {
                     readOnly={props.readonly}
                     value={props.value}
                     name={props.label}
+                    onFocus={handleFocusInput}
                     onChange={handleUpdateValue}
                     onBlur={handleValidateInput}
-                    onFocus={()=>setState(props.value.length === 0 ? 'Warning' : 'Initial')}
                 />
-                {state !== 'Initial' && displayState()}
+                {props.state !== 'Initial' && displayState()}
             </div>
         </div>
     )
