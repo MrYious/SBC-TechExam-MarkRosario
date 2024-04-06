@@ -4,15 +4,16 @@ import { loadError, loadRecipe } from '../../slicers/SelectRecipeSlicer';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHooks';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { RecipePageForm } from '../../components/RecipePageForm';
 import { useEffect } from 'react';
 
 function Recipe() {
 
   const { title } = useParams();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const recipeList = useAppSelector(state => state.recipes);
   const {recipe, loading, error} = useAppSelector(state => state.selectRecipe);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const selectedRecipe = recipeList.find(recipe => recipe.title.toLowerCase() === title?.toLowerCase());
@@ -43,17 +44,7 @@ function Recipe() {
 
   return (
     <main id='recipe'>
-      <form onSubmit={()=>{}}>
-        <section id='leftImageContainer'>
-          <button>
-            Back
-          </button>
-          <img src="" alt="" />
-        </section>
-        <section id='rightInputContainer'>
-          {recipe.dateAdded}
-        </section>
-      </form>
+      <RecipePageForm recipe={recipe} createNew={false} />
     </main>
   )
 }
