@@ -29,8 +29,8 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
     // TODO: use grid here so that the columns are fixed
     return (
         <div className='recipeItem' onClick={()=>{handleOpenRecipe(props.recipe.title)}}>
-            <div className='imageHolder'>
-                <img src={props.recipe.image || imgPlaceholder} alt="recipe image" id="cover" />
+            <div className='imageHolder' style={{backgroundImage: `url('${props.recipe.image || imgPlaceholder}')`}}>
+                {/* <img src={props.recipe.image || imgPlaceholder} alt="recipe image" id="cover" /> */}
                 <button onClick={(e)=>{handleToggleFavoriteRecipe(e, props.recipe.title)}}>
                     {
                         favorite.list.find(title => title.toLowerCase() === props.recipe.title.toLowerCase()) ?
