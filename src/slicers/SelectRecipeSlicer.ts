@@ -2,10 +2,21 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { Recipe } from "./RecipeSlicer";
 
+export type Validation = 'Initial' | 'Warning' | 'Error' | 'Success'
+
+export interface RecipeValidation {
+    name: Validation,
+    email: Validation,
+    title: Validation,
+    description: Validation,
+    ingredients: Validation,
+    instructions: Validation,
+    image: Validation,
+}
+
 interface SelectRecipe {
     recipe: Recipe
-    loading: boolean
-    error: boolean
+    validation: RecipeValidation
 }
 
 const initialState: SelectRecipe = {
@@ -19,26 +30,28 @@ const initialState: SelectRecipe = {
         image: "",
         dateAdded: "",
     },
-    loading: true,
-    error: false
+    validation: {
+        name: 'Initial',
+        email: 'Initial',
+        title: 'Initial',
+        description: 'Initial',
+        ingredients: 'Initial',
+        instructions: 'Initial',
+        image: 'Initial',
+    },
 }
 
 const SelectRecipeSlicer =  createSlice({
     name: 'selectRecipe',
     initialState,
     reducers: {
-        loadNewRecipe: (state) => {
-            state.loading = false,
-            state.error = false
+        startNewRecipe: (state) => {
+            state.recipe = initialState.recipe
+            state.validation = initialState.validation
         },
         loadRecipe: (state, action: PayloadAction<Recipe>) => {
             state.recipe = action.payload
-            state.loading = false
-            state.error = false
-        },
-        loadError: (state) => {
-            state.error = true
-            state.loading = false
+            state.validation = initialState.validation
         },
         updateName: (state, action: PayloadAction<string>) => {
             state.recipe.name = action.payload
@@ -70,8 +83,7 @@ const SelectRecipeSlicer =  createSlice({
 // Actions
 export const {
     loadRecipe,
-    loadError,
-    loadNewRecipe,
+    startNewRecipe,
     updateDateAdded,
     updateDescription,
     updateEmail,
@@ -83,9 +95,6 @@ export const {
 } = SelectRecipeSlicer.actions
 
 export type SelectRecipeSlicerAction =
-    | typeof loadRecipe
-    | typeof loadError
-    | typeof loadNewRecipe
     | typeof updateDateAdded
     | typeof updateDescription
     | typeof updateEmail
