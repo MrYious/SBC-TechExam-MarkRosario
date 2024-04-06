@@ -34,6 +34,12 @@ function Home() {
       }
       return true;
     })
+    .filter((recipe)=> {
+      if (userPreference.searchString) {
+        return recipe.title.toLowerCase().includes(userPreference.searchString.toLowerCase());
+      }
+      return true;
+    })
   }
 
   return (
