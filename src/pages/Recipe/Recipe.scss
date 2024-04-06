@@ -27,6 +27,46 @@ main#recipe {
         overflow: hidden;
         height: 100%;
         padding: 1.2rem;
+        position: relative;
+
+        button.toast {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 5px;
+            user-select: none;
+            cursor: pointer;
+
+            span {
+                position: absolute;
+                top: 2px;
+                right: 4px;
+                padding: 0;
+                background-color: rgba(255, 255, 255, 0);
+            }
+
+            &.success {
+                border: 1px solid #009e00;
+                background-color: #9fd69f;
+                color: green;
+
+                button {
+                    color: green;
+                }
+            }
+
+            &.error {
+                border: 1px solid #9e0000;
+                background-color: #d69f9f;
+                color: rgb(128, 0, 0);
+
+                button {
+                    color: rgb(128, 0, 0);
+                }
+            }
+        }
 
         section#leftImageContainer {
             display: flex;
