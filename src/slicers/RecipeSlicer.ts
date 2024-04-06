@@ -28,7 +28,8 @@ const RecipeSlicer =  createSlice({
                     return recipe
                 }
             }),
-        createNewRecipe: (state, action: PayloadAction<Recipe>) => [...state, action.payload],
+        createNewRecipe: (state, action: PayloadAction<Recipe>) =>
+            [...state, {...action.payload, dateAdded: new Date().toLocaleDateString()}],
     }
 });
 
