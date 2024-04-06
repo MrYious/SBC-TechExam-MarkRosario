@@ -18,11 +18,13 @@ const RecipeSlicer =  createSlice({
     initialState,
     reducers: {
         loadRecipes: (_state, action: PayloadAction<Recipe[]>) => action.payload,
+        deleteRecipe: (state, action: PayloadAction<string>) =>
+            state.filter((recipe) => recipe.title !== action.payload )
     }
 });
 
 // Actions
-export const { loadRecipes } = RecipeSlicer.actions
+export const { loadRecipes, deleteRecipe } = RecipeSlicer.actions
 
 // Reducer
 export default RecipeSlicer.reducer

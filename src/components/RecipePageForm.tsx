@@ -1,3 +1,4 @@
+import { Recipe, deleteRecipe } from '../slicers/RecipeSlicer';
 import { Toast as ToastInteface, closeToast, openToast } from "../slicers/ToastSlicer"
 import { updateDescription, updateEmail, updateIngredients, updateInstructions, updateName, updateTitle } from '../slicers/SelectRecipeSlicer';
 import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
@@ -5,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
 import { CustomFormButton } from './CustomFormButton';
 import { CustomFormInput } from './CustomFormInput';
 import { CustomFormTextArea } from './CustomFormTextArea';
-import { Recipe } from '../slicers/RecipeSlicer';
 import { Toast } from './Toast';
 import iconBackArrow from '../assets/backArrow.svg';
 import { useNavigate } from "react-router-dom";
@@ -27,12 +27,12 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
     }
 
     const handleDelete = () => {
-        const newToast: ToastInteface = {
-            show: true,
-            message: 'Error: Invalid Fields',
-            type: 'ERROR'
-        }
-        dispatch(openToast(newToast))
+        dispatch(deleteRecipe(props.recipe.title));
+        returnHomePage()
+    }
+
+    const returnHomePage = () => {
+        navigate("/")
     }
 
     return (<form onSubmit={handleSubmit}>
@@ -40,7 +40,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
             toast.show && <Toast toast={toast}/>
         }
         <section id='leftImageContainer'>
-            <button onClick={()=>navigate("/")} id='goBackButton'>
+            <button onClick={returnHomePage} id='goBackButton'>
                 <img src={iconBackArrow} alt="icon back arrow" className="icon"/>
                 Back
             </button>
