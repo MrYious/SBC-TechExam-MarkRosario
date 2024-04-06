@@ -1,0 +1,33 @@
+main#recipe {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &.loading, &.error {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        button {
+            padding: 0.8rem;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                border-color: green;
+            }
+        }
+    }
+
+    section#leftImageContainer {
+        background-color: blue;
+    }
+
+    section#rightInputContainer {
+        background-color: green;
+    }
+}
