@@ -101,6 +101,7 @@ main#home {
                 position: absolute;
                 right: 1rem;
                 top: 1rem;
+                z-index: 2;
 
                 img {
                     width: 100%;
@@ -194,7 +195,7 @@ main#home {
             .line {
                 border-top: 1px solid #435490;
                 width: 100%;
-                
+
                 &.line:last-child {
                     display: none;
                 }
