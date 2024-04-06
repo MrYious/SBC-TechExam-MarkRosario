@@ -1,5 +1,5 @@
-import { Recipe, deleteRecipe } from '../slicers/RecipeSlicer';
-import { Toast as ToastInteface, closeToast, openToast } from "../slicers/ToastSlicer"
+import { Recipe, deleteRecipe, updateRecipe } from '../slicers/RecipeSlicer';
+import { Toast as ToastInterface, closeToast, openToast } from "../slicers/ToastSlicer"
 import { updateDescription, updateEmail, updateIngredients, updateInstructions, updateName, updateTitle } from '../slicers/SelectRecipeSlicer';
 import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
 
@@ -18,10 +18,22 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const newToast: ToastInteface = {
-            show: true,
-            message: 'Success: Recipe Saved',
-            type: 'SUCCESS'
+
+        var newToast: ToastInterface;
+
+        if(isAllInputValid(props.recipe)){
+            dispatch(updateRecipe(props.recipe));
+            newToast = {
+                show: true,
+                message: 'Success: Recipe Saved',
+                type: 'SUCCESS'
+            }
+        } else {
+            newToast = {
+                show: true,
+                message: 'Error: Invalid Field(s)',
+                type: 'ERROR'
+            }
         }
         dispatch(openToast(newToast));
     }
@@ -35,6 +47,23 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
         navigate("/")
     }
 
+    function isAllInputValid(recipe: Recipe) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var isValidEmail = emailRegex.test(recipe.email);
+        if (
+            !recipe.title
+            || !recipe.name
+            || !recipe.email
+            || !isValidEmail
+            || !recipe.description
+            || !recipe.ingredients
+            || !recipe.instructions
+        ) {
+            return false;
+        }
+        return true;
+    }
+
     return (<form onSubmit={handleSubmit}>
         {
             toast.show && <Toast toast={toast}/>
@@ -44,7 +73,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
                 <img src={iconBackArrow} alt="icon back arrow" className="icon"/>
                 Back
             </button>
-            <button onClick={()=>{}} id='recipeImage'>
+            <button type='button' onClick={()=>{}} id='recipeImage'>
                 <img src={props.recipe.image} alt="recipe image" />
             </button>
         </section>
