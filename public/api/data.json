@@ -6,7 +6,7 @@
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
-        "image": "./images/Placeholder1.jpg",
+        "image": "/images/Placeholder1.jpg",
         "dateAdded": "Mar 04 2001"
     },
     {
@@ -16,7 +16,7 @@
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
-        "image": "./images/Placeholder2.jpg",
+        "image": "/images/Placeholder2.jpg",
         "dateAdded": "Mar 04 2001"
     },
     {
@@ -26,7 +26,7 @@
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
-        "image": "./images/Placeholder3.jpg",
+        "image": "/images/Placeholder3.jpg",
         "dateAdded": "Mar 04 2001"
     },
     {
@@ -36,7 +36,7 @@
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
-        "image": "./images/Placeholder4.jpg",
+        "image": "/images/Placeholder4.jpg",
         "dateAdded": "Mar 04 2001"
     },
     {
@@ -46,7 +46,7 @@
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
-        "image": "./images/Placeholder5.jpg",
+        "image": "/images/Placeholder5.jpg",
         "dateAdded": "Mar 04 2001"
     },
     {
@@ -56,7 +56,7 @@
         "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "ingredients": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
         "instructions": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati quia illum possimus reiciendis animi cupiditate, vitae aspernatur doloribus delectus architecto.",
-        "image": "./images/Placeholder6.jpg",
+        "image": "/images/Placeholder6.jpg",
         "dateAdded": "Mar 04 2001"
     }
 ]
