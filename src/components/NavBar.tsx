@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom"
 
 export const NavBar = () => {
     const location = useLocation();
-    console.log(location.pathname);
 
     return (
         <nav>
