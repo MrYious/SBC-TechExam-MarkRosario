@@ -5,7 +5,7 @@ import { Recipe } from '../slicers/RecipeSlicer';
 import iconBackArrow from '../assets/backArrow.svg';
 import { useNavigate } from "react-router-dom";
 
-export const RecipePageForm = (props: {recipe : Recipe, createNew: boolean}) => {
+export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => {
 
     const navigate = useNavigate();
 
@@ -54,11 +54,27 @@ export const RecipePageForm = (props: {recipe : Recipe, createNew: boolean}) => 
                 placeholder='Description here'
                 label='DESCRIPTION'
                 readonly={false}
-                rows={5}
+                rows={3}
+            />
+            <CustomFormTextArea
+                value={props.recipe.ingredients}
+                placeholder='Description here'
+                label='INGREDIENTS'
+                readonly={false}
+                rows={4}
+            />
+            <CustomFormTextArea
+                value={props.recipe.instructions}
+                placeholder='Description here'
+                label='INSTRUCTIONS'
+                readonly={false}
+                rows={4}
             />
             <div className='buttonGroup'>
+                {
+                    !props.newRecipe && <CustomFormButton text='Delete' type='delete' action={handleDelete}/>
+                }
                 <CustomFormButton text='Save' type='save' action={handleSubmit}/>
-                <CustomFormButton text='Delete' type='delete' action={handleDelete}/>
             </div>
         </section>
     </form>)

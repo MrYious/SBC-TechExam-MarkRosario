@@ -44,7 +44,7 @@ function Recipe() {
 
   return (
     <main id='recipe'>
-      <RecipePageForm recipe={recipe} createNew={false} />
+      <RecipePageForm recipe={recipe} newRecipe={false} />
     </main>
   )
 }
