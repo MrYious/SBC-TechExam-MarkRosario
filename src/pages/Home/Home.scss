@@ -23,16 +23,65 @@ main#home {
                 margin: 0;
             }
 
-            select {
-                outline: none;
-                font-weight: 500;
-                padding: 2px;
-                box-sizing: border-box;
-                font-size: 1.1rem;
+            div.dropdownGroup{
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                font-weight: 600;
 
-                option {
-                    font-weight: 500;
-                    padding: 2px;
+                div.dropdownValue {
+                    border: 1px solid #000000;
+                    border-radius: 4px;
+                    background-color: #ffffff;
+                    display: flex;
+                    padding: 0.3rem 0.6rem;
+                    cursor: pointer;
+
+                    .value {
+                        flex: 1;
+
+                        &.placeholder {
+                            color: #a6a6a6;
+                        }
+                    }
+
+                    &.open {
+                        border: 1px solid #1047b4;
+                    }
+                }
+
+                div.dropdownItemGroup {
+                    border: 1px solid #000000;
+                    border-radius: 4px;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #FFFFFF;
+
+                    button {
+                        padding: 0.4rem 0.6rem;
+                        text-align: left;
+                        font-weight: 600;
+                        border: none;
+                        outline: none;
+                        background-color: rgba(255, 255, 255, 0);
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: rgb(236, 235, 235);
+                        }
+
+                        &.active {
+                            background-color: rgb(201, 201, 201);
+                        }
+
+                        &:first-child {
+                            border-radius: 4px 4px 0 0 ;
+                        }
+
+                        &:last-child {
+                            border-radius: 0 0 4px 4px ;
+                        }
+                    }
                 }
             }
 

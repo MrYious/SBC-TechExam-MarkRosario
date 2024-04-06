@@ -1,25 +1,19 @@
-import { SortOrder, updateSortOrder } from "../slicers/UserPreferenceSlicer";
-import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
-
-import { ChangeEvent } from "react";
+import { CustomDropdown } from "./CustomDropdown";
+import { useAppSelector } from "../hooks/useReduxHooks"
 
 export const SortByTitle = () => {
 
-    const sortOrder = useAppSelector(state => state.userPreference.sortOrder);
-    const dispatch = useAppDispatch();
-
-    const handleSelectSortOrder = (e: ChangeEvent<HTMLSelectElement>) => {
-        dispatch(updateSortOrder(e.target.value as SortOrder));
-    }
+    const sort = useAppSelector(state => state.userPreference.sort);
+    const options: string[] = ["ASC", "DESC"];
 
     return (
         <div className="preference">
             <h3>Sort by Title</h3>
-            <select name="sortTitle" id="sortTitle" value={sortOrder ?? ''} onChange={handleSelectSortOrder}>
-                <option disabled value={''} >Select</option>
-                <option value="ASC">ASC</option>
-                <option value="DESC">DESC</option>
-            </select>
+            <CustomDropdown
+                options={options}
+                value={sort.byTitle}
+                objKey={'byTitle'}
+            />
         </div>
     )
 }
