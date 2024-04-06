@@ -21,6 +21,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const toast = useAppSelector(state => state.toast);
+    const recipeList = useAppSelector(state => state.recipes);
     const { recipe, validation } = useAppSelector(state => state.selectRecipe)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -36,6 +37,12 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 show: true,
                 message: 'Success: Recipe Saved',
                 type: 'SUCCESS'
+            }
+        } else if(props.newRecipe && !isUniqueTitle(recipe.title)){
+            newToast = {
+                show: true,
+                message: 'Error: Enter a unique title!',
+                type: 'ERROR'
             }
         } else {
             newToast = {
@@ -64,7 +71,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
             ...validation,
             name: recipe.name ? 'Success' : 'Error',
             email: recipe.email && isValidEmail ? 'Success' : 'Error',
-            title: recipe.title ? 'Success' : 'Error',
+            title: recipe.title && isUniqueTitle(recipe.title) ? 'Success' : 'Error',
             description: recipe.description ? 'Success' : 'Error',
             ingredients: recipe.ingredients ? 'Success' : 'Error',
             instructions: recipe.instructions ? 'Success' : 'Error',
@@ -73,22 +80,27 @@ export const RecipePageForm = (props: RecipeFormProps) => {
         dispatch(updateValidation(newValidation));
     }
 
-    function executeValidateAllInput(recipe: Recipe) {
+    const executeValidateAllInput = (recipe: Recipe) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var isValidEmail = emailRegex.test(recipe.email);
 
         if (
-            !recipe.title
-            || !recipe.name
-            || !recipe.email
-            || !isValidEmail
-            || !recipe.description
-            || !recipe.ingredients
-            || !recipe.instructions
+            isUniqueTitle(recipe.title)
+            && recipe.title
+            && recipe.name
+            && recipe.email
+            && isValidEmail
+            && recipe.description
+            && recipe.ingredients
+            && recipe.instructions
         ) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    const isUniqueTitle = (title: string) => {
+        return !recipeList.find(recipe => recipe.title.toLowerCase() === title.toLowerCase())
     }
 
     return (<form onSubmit={handleSubmit}>

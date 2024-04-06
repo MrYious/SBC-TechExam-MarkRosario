@@ -26,7 +26,7 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
     const handleOpenRecipe = (title: string) => {
         navigate("recipe/" + title)
     }
-
+    // TODO: use grid here so that the columns are fixed
     return (
         <div className='recipeItem' onClick={()=>{handleOpenRecipe(props.recipe.title)}}>
             <div className='imageHolder'>
