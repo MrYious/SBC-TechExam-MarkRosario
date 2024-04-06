@@ -2,16 +2,16 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { Recipe } from "./RecipeSlicer";
 
-export type Validation = 'Initial' | 'Warning' | 'Error' | 'Success'
+export type State = 'Initial' | 'Warning' | 'Error' | 'Success'
 
 export interface RecipeValidation {
-    name: Validation,
-    email: Validation,
-    title: Validation,
-    description: Validation,
-    ingredients: Validation,
-    instructions: Validation,
-    image: Validation,
+    name: State,
+    email: State,
+    title: State,
+    description: State,
+    ingredients: State,
+    instructions: State,
+    image: State,
 }
 
 interface SelectRecipe {
