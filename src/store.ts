@@ -1,11 +1,13 @@
 import RecipeSlicer from "./slicers/RecipeSlicer";
+import SelectRecipeSlicer from "./slicers/SelectRecipeSlicer";
 import UserPreferenceSlicer from "./slicers/UserPreferenceSlicer";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
     reducer: {
         recipes: RecipeSlicer,
-        userPreference: UserPreferenceSlicer
+        userPreference: UserPreferenceSlicer,
+        selectRecipe: SelectRecipeSlicer
     }
 })
 
