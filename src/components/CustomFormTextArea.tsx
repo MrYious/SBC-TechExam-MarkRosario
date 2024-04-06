@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react"
+
 import { SelectRecipeSlicerAction } from "../slicers/SelectRecipeSlicer"
 import iconError from "../assets/inputError.svg"
 import iconSuccess from "../assets/inputSuccess.svg"
 import iconWarning from "../assets/inputWarning.svg"
 import { useAppDispatch } from "../hooks/useReduxHooks"
-import { useState } from "react"
 
 interface FormTextArea {
     label: string
@@ -15,10 +16,15 @@ interface FormTextArea {
 }
 
 export const CustomFormTextArea = (props: FormTextArea) => {
-
     type State = 'Initial' | 'Success' | 'Warning' | 'Error';
     const [state, setState] = useState<State>('Initial');
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+      if (props.value.length === 0) {
+        setState('Warning')
+      }
+    }, [props.value])
 
     const displayState = () => {
         return <img
@@ -28,7 +34,11 @@ export const CustomFormTextArea = (props: FormTextArea) => {
     }
 
     const handleValidateInput = (e: React.FocusEvent<HTMLTextAreaElement>) => {
-        console.log(e.target.value);
+        if (e.target.value.length === 0) {
+            setState('Error');
+        } else {
+            setState('Success');
+        }
     }
 
     const handleUpdateValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -46,7 +56,7 @@ export const CustomFormTextArea = (props: FormTextArea) => {
                     rows={props.rows}
                     onChange={handleUpdateValue}
                     onBlur={handleValidateInput}
-                    onFocus={()=>setState('Initial')}
+                    onFocus={()=>setState(props.value.length === 0 ? 'Warning' : 'Initial')}
                 />
                 {state !== 'Initial' && displayState()}
             </div>
