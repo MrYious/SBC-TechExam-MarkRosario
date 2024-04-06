@@ -1,6 +1,5 @@
-import { Recipe, deleteRecipe, updateRecipe } from '../slicers/RecipeSlicer';
-import { Toast as ToastInterface, closeToast, openToast } from "../slicers/ToastSlicer"
-import { updateDescription, updateEmail, updateIngredients, updateInstructions, updateName, updateTitle } from '../slicers/SelectRecipeSlicer';
+import { Recipe, deleteRecipe } from '../slicers/RecipeSlicer';
+import { Toast as ToastInterface, openToast } from "../slicers/ToastSlicer"
 import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
 
 import { CustomFormButton } from './CustomFormButton';
@@ -10,19 +9,25 @@ import { Toast } from './Toast';
 import iconBackArrow from '../assets/backArrow.svg';
 import { useNavigate } from "react-router-dom";
 
-export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => {
+interface RecipeFormProps {
+    newRecipe: boolean
+    handleSave: (recipe: Recipe) => void
+}
+
+export const RecipePageForm = (props: RecipeFormProps) => {
 
     const navigate = useNavigate();
-    const toast = useAppSelector(state => state.toast);
     const dispatch = useAppDispatch();
+    const toast = useAppSelector(state => state.toast);
+    const { recipe, validation } = useAppSelector(state => state.selectRecipe)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         var newToast: ToastInterface;
 
-        if(isAllInputValid(props.recipe)){
-            dispatch(updateRecipe(props.recipe));
+        if(isAllInputValid(recipe)){
+            props.handleSave(recipe)
             newToast = {
                 show: true,
                 message: 'Success: Recipe Saved',
@@ -39,7 +44,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
     }
 
     const handleDelete = () => {
-        dispatch(deleteRecipe(props.recipe.title));
+        dispatch(deleteRecipe(recipe.title));
         returnHomePage()
     }
 
@@ -74,53 +79,59 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
                 Back
             </button>
             <button type='button' onClick={()=>{}} id='recipeImage'>
-                <img src={props.recipe.image} alt="recipe image" />
+                <img src={recipe.image} alt="recipe image" />
             </button>
         </section>
         <section id='rightInputContainer'>
             <CustomFormInput
-                value={props.recipe.name}
-                handleUpdate={updateName}
+                objKey={'name'}
+                state={validation.name}
+                value={recipe.name}
                 placeholder='Text field data'
                 label='YOUR NAME'
                 type={"text"}
                 readonly={false}
             />
             <CustomFormInput
-                value={props.recipe.email}
-                handleUpdate={updateEmail}
+                objKey={'email'}
+                state={validation.email}
+                value={recipe.email}
                 placeholder='Text field data'
                 label='EMAIL ADDRESS'
                 type={"email"}
                 readonly={false}
             />
             <CustomFormInput
-                value={props.recipe.title}
-                handleUpdate={updateTitle}
+                objKey={'title'}
+                state={validation.title}
+                value={recipe.title}
                 placeholder='Text field data'
                 label='TITLE'
                 type={"text"}
                 readonly
             />
             <CustomFormTextArea
-                value={props.recipe.description}
-                handleUpdate={updateDescription}
+                objKey={'description'}
+                state={validation.description}
+                value={recipe.description}
                 placeholder='Description here'
                 label='DESCRIPTION'
                 readonly={false}
                 rows={3}
             />
             <CustomFormTextArea
-                value={props.recipe.ingredients}
-                handleUpdate={updateIngredients}
+                objKey={'ingredients'}
+                state={validation.ingredients}
+                value={recipe.ingredients}
                 placeholder='Description here'
                 label='INGREDIENTS'
                 readonly={false}
                 rows={4}
             />
             <CustomFormTextArea
-                value={props.recipe.instructions}
-                handleUpdate={updateInstructions}
+                objKey={'instructions'}
+                state={validation.instructions}
+                value={recipe.instructions}
                 placeholder='Description here'
                 label='INSTRUCTIONS'
                 readonly={false}

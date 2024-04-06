@@ -1,23 +1,24 @@
+import { State, updateSelectedRecipe } from "../slicers/SelectRecipeSlicer"
+import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
 import { useEffect, useState } from "react"
 
-import { SelectRecipeSlicerAction } from "../slicers/SelectRecipeSlicer"
 import iconError from "../assets/inputError.svg"
 import iconSuccess from "../assets/inputSuccess.svg"
 import iconWarning from "../assets/inputWarning.svg"
-import { useAppDispatch } from "../hooks/useReduxHooks"
 
-interface FormInput {
+interface FormInputProps {
     label: string
     placeholder: string
     value: string
     readonly: boolean
     type: "text" | "email"
-    handleUpdate:  SelectRecipeSlicerAction | any
+    state: State
+    objKey: string
 }
 
-export const CustomFormInput = (props: FormInput) => {
-    type State = 'Initial' | 'Success' | 'Warning' | 'Error'
+export const CustomFormInput = (props: FormInputProps) => {
     const [state, setState] = useState<State>('Initial')
+    const { recipe } = useAppSelector(state => state.selectRecipe)
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -44,7 +45,7 @@ export const CustomFormInput = (props: FormInput) => {
     }
 
     const handleUpdateValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(props.handleUpdate(e.target.value))
+        dispatch(updateSelectedRecipe({...recipe, [props.objKey]: e.target.value}))
     }
 
     return (

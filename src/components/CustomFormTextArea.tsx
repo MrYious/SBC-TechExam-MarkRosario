@@ -1,23 +1,24 @@
+import { State, updateSelectedRecipe } from "../slicers/SelectRecipeSlicer"
+import { useAppDispatch, useAppSelector } from "../hooks/useReduxHooks"
 import { useEffect, useState } from "react"
 
-import { SelectRecipeSlicerAction } from "../slicers/SelectRecipeSlicer"
 import iconError from "../assets/inputError.svg"
 import iconSuccess from "../assets/inputSuccess.svg"
 import iconWarning from "../assets/inputWarning.svg"
-import { useAppDispatch } from "../hooks/useReduxHooks"
 
-interface FormTextArea {
+interface FormTextAreaProps {
     label: string
     placeholder: string
     value: string
     readonly: boolean
     rows: number
-    handleUpdate: SelectRecipeSlicerAction | any
+    state: State
+    objKey: string
 }
 
-export const CustomFormTextArea = (props: FormTextArea) => {
-    type State = 'Initial' | 'Success' | 'Warning' | 'Error';
+export const CustomFormTextArea = (props: FormTextAreaProps) => {
     const [state, setState] = useState<State>('Initial');
+    const { recipe } = useAppSelector(state => state.selectRecipe)
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -42,7 +43,7 @@ export const CustomFormTextArea = (props: FormTextArea) => {
     }
 
     const handleUpdateValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        dispatch(props.handleUpdate(e.target.value))
+        dispatch(updateSelectedRecipe({...recipe, [props.objKey]: e.target.value}))
     }
 
     return (

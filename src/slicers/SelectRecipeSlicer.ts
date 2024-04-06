@@ -53,30 +53,12 @@ const SelectRecipeSlicer =  createSlice({
             state.recipe = action.payload
             state.validation = initialState.validation
         },
-        updateName: (state, action: PayloadAction<string>) => {
-            state.recipe.name = action.payload
+        updateSelectedRecipe: (state, action: PayloadAction<Recipe>) => {
+            state.recipe = action.payload
         },
-        updateEmail: (state, action: PayloadAction<string>) => {
-            state.recipe.email = action.payload
-        },
-        updateTitle: (state, action: PayloadAction<string>) => {
-            state.recipe.title = action.payload
-        },
-        updateDescription: (state, action: PayloadAction<string>) => {
-            state.recipe.description = action.payload
-        },
-        updateIngredients: (state, action: PayloadAction<string>) => {
-            state.recipe.ingredients = action.payload
-        },
-        updateInstructions: (state, action: PayloadAction<string>) => {
-            state.recipe.instructions = action.payload
-        },
-        updateImage: (state, action: PayloadAction<string>) => {
-            state.recipe.image = action.payload
-        },
-        updateDateAdded: (state, action: PayloadAction<string>) => {
-            state.recipe.dateAdded = action.payload
-        },
+        updateValidation: (state, action: PayloadAction<RecipeValidation>) => {
+            state.validation = action.payload
+        }
     }
 });
 
@@ -84,25 +66,11 @@ const SelectRecipeSlicer =  createSlice({
 export const {
     loadRecipe,
     startNewRecipe,
-    updateDateAdded,
-    updateDescription,
-    updateEmail,
-    updateImage,
-    updateIngredients,
-    updateInstructions,
-    updateName,
-    updateTitle,
+    updateSelectedRecipe,
+    updateValidation
 } = SelectRecipeSlicer.actions
 
-export type SelectRecipeSlicerAction =
-    | typeof updateDateAdded
-    | typeof updateDescription
-    | typeof updateEmail
-    | typeof updateImage
-    | typeof updateIngredients
-    | typeof updateInstructions
-    | typeof updateName
-    | typeof updateTitle;
+export type UpdateSelectedRecipeAction = typeof updateSelectedRecipe
 
 // Reducer
 export default SelectRecipeSlicer.reducer
