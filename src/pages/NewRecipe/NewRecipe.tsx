@@ -32,7 +32,7 @@ function NewRecipe() {
 
   return (
     <main id='newRecipe'>
-      <RecipePageForm newRecipe={false} handleSave={handleSave}/>
+      <RecipePageForm newRecipe={true} handleSave={handleSave}/>
     </main>
   )
 }
