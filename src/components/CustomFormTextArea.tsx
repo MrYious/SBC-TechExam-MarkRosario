@@ -1,16 +1,31 @@
 import iconError from "../assets/inputError.svg"
 import iconSuccess from "../assets/inputSuccess.svg"
 import iconWarning from "../assets/inputWarning.svg"
+import { useState } from "react"
 
 interface FormTextArea {
     label: string
     placeholder: string
     value: string
-    disabled: boolean
+    readonly: boolean
     rows: number
 }
 
 export const CustomFormTextArea = (props: FormTextArea) => {
+
+    type State = 'Initial' | 'Success' | 'Warning' | 'Error';
+    const [state, setState] = useState<State>('Initial');
+
+    const displayState = () => {
+        return <img
+            src={state === 'Success' ? iconSuccess : state === 'Warning' ? iconWarning : iconError }
+            alt="icon state"
+        />
+    }
+
+    const handleValidateInput = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+        console.log(e.target.value);
+    }
 
     return (
         <div className='formInput'>
@@ -19,22 +34,11 @@ export const CustomFormTextArea = (props: FormTextArea) => {
                 <textarea
                     placeholder={props.placeholder}
                     value={props.value}
-                    disabled={props.disabled}
+                    readOnly={props.readonly}
                     rows={props.rows}
-                    
+                    onBlur={handleValidateInput}
                 />
-                <img
-                    src={iconError}
-                    alt="icon"
-                />
-                {/* <img
-                    src={iconSuccess}
-                    alt="icon"
-                />
-                <img
-                    src={iconWarning}
-                    alt="icon"
-                /> */}
+                {state && displayState()}
             </div>
         </div>
     )
