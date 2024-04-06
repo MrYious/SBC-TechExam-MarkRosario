@@ -125,6 +125,14 @@ main {
                     display: flex;
                     border-radius: 4px;
 
+                    &.Error {
+                        border: 1px solid #EB5252;
+                    }
+
+                    &.Warning {
+                        border: 1px solid #ED933F;
+                    }
+
                     &:focus-within {
                         border: 1px solid #1047b4;
                     }

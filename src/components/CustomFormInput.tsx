@@ -47,7 +47,7 @@ export const CustomFormInput = (props: FormInputProps) => {
     return (
         <div className='formInput'>
             <label>{props.label}</label>
-            <div className="customInput">
+            <div className={`${props.state} customInput`}>
                 <input
                     type={"text"}
                     placeholder={props.placeholder}

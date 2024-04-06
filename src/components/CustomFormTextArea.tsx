@@ -45,7 +45,7 @@ export const CustomFormTextArea = (props: FormTextAreaProps) => {
     return (
         <div className='formInput'>
             <label>{props.label}</label>
-            <div className="customInput">
+            <div className={`${props.state} customInput`}>
                 <textarea
                     placeholder={props.placeholder}
                     name={props.label}
