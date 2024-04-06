@@ -5,16 +5,11 @@ import React from 'react';
 import { RecipeItem } from '../../components/RecipeItem';
 import { SideBar } from '../../components/SideBar';
 import { useAppSelector } from '../../hooks/useReduxHooks';
-import { useEffect } from 'react';
 
 function Home() {
 
   const recipes = useAppSelector((state) => state.recipes);
   const userPreference = useAppSelector((state) => state.userPreference);
-
-  useEffect(() => {
-    console.log("State", recipes);
-  }, [recipes])
 
   const sortRecipesBySortOrder = (unsortedList: typeof recipes, order: typeof userPreference.sortOrder) => {
     if(order) {
