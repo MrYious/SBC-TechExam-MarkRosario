@@ -36,12 +36,20 @@ const UserPreferenceSlicer =  createSlice({
             } else {
                 state.favorites.list.push(action.payload);
             }
+        },
+        updateSearchString: (state, action: PayloadAction<string>) => {
+            state.searchString = action.payload
         }
     }
 });
 
 // Actions
-export const { updateSortOrder, toggleShowFavorites, toggleFavoriteRecipe } = UserPreferenceSlicer.actions
+export const {
+    updateSortOrder,
+    toggleShowFavorites,
+    toggleFavoriteRecipe,
+    updateSearchString
+} = UserPreferenceSlicer.actions
 
 // Reducer
 export default UserPreferenceSlicer.reducer
