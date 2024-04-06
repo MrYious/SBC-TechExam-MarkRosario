@@ -51,9 +51,10 @@ export const CustomFormTextArea = (props: FormTextArea) => {
             <div className="customInput">
                 <textarea
                     placeholder={props.placeholder}
-                    value={props.value}
+                    name={props.label}
                     readOnly={props.readonly}
                     rows={props.rows}
+                    value={props.value}
                     onChange={handleUpdateValue}
                     onBlur={handleValidateInput}
                     onFocus={()=>setState(props.value.length === 0 ? 'Warning' : 'Initial')}
