@@ -53,7 +53,7 @@ function Home() {
               filteredRecipeList()
               .map((recipe) => <>
                 <RecipeItem recipe={recipe} key={recipe.title}/>
-                <div className='line'></div>
+                <div className='line' key={recipe.title + 'line'}></div>
               </>)
           }
         </div>
