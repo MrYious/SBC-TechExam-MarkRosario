@@ -1,5 +1,6 @@
 import RecipeSlicer from "./slicers/RecipeSlicer";
 import SelectRecipeSlicer from "./slicers/SelectRecipeSlicer";
+import ToastSlicer from "./slicers/ToastSlicer";
 import UserPreferenceSlicer from "./slicers/UserPreferenceSlicer";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -7,7 +8,8 @@ export const store = configureStore({
     reducer: {
         recipes: RecipeSlicer,
         userPreference: UserPreferenceSlicer,
-        selectRecipe: SelectRecipeSlicer
+        selectRecipe: SelectRecipeSlicer,
+        toast: ToastSlicer
     }
 })
 
