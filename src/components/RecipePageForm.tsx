@@ -1,3 +1,5 @@
+import { updateDescription, updateEmail, updateIngredients, updateInstructions, updateName, updateTitle } from '../slicers/SelectRecipeSlicer';
+
 import { CustomFormButton } from './CustomFormButton';
 import { CustomFormInput } from './CustomFormInput';
 import { CustomFormTextArea } from './CustomFormTextArea';
@@ -30,6 +32,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
         <section id='rightInputContainer'>
             <CustomFormInput
                 value={props.recipe.name}
+                handleUpdate={updateName}
                 placeholder='Text field data'
                 label='YOUR NAME'
                 type={"text"}
@@ -37,6 +40,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
             />
             <CustomFormInput
                 value={props.recipe.email}
+                handleUpdate={updateEmail}
                 placeholder='Text field data'
                 label='EMAIL ADDRESS'
                 type={"email"}
@@ -44,6 +48,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
             />
             <CustomFormInput
                 value={props.recipe.title}
+                handleUpdate={updateTitle}
                 placeholder='Text field data'
                 label='TITLE'
                 type={"text"}
@@ -51,6 +56,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
             />
             <CustomFormTextArea
                 value={props.recipe.description}
+                handleUpdate={updateDescription}
                 placeholder='Description here'
                 label='DESCRIPTION'
                 readonly={false}
@@ -58,6 +64,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
             />
             <CustomFormTextArea
                 value={props.recipe.ingredients}
+                handleUpdate={updateIngredients}
                 placeholder='Description here'
                 label='INGREDIENTS'
                 readonly={false}
@@ -65,6 +72,7 @@ export const RecipePageForm = (props: {recipe : Recipe, newRecipe: boolean}) => 
             />
             <CustomFormTextArea
                 value={props.recipe.instructions}
+                handleUpdate={updateInstructions}
                 placeholder='Description here'
                 label='INSTRUCTIONS'
                 readonly={false}
