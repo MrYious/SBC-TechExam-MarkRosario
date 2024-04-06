@@ -28,12 +28,12 @@ const RecipeSlicer =  createSlice({
                     return recipe
                 }
             }),
-        newRecipe: (state, action: PayloadAction<Recipe>) => [...state, action.payload],
+        createNewRecipe: (state, action: PayloadAction<Recipe>) => [...state, action.payload],
     }
 });
 
 // Actions
-export const { loadRecipes, deleteRecipe, updateRecipe } = RecipeSlicer.actions
+export const { loadRecipes, deleteRecipe, updateRecipe, createNewRecipe } = RecipeSlicer.actions
 
 // Reducer
 export default RecipeSlicer.reducer

@@ -1,12 +1,12 @@
 import './Recipe.scss'
 
 import { Recipe as RecipeInterface, updateRecipe } from '../../slicers/RecipeSlicer';
-import { loadError, loadRecipe } from '../../slicers/SelectRecipeSlicer';
 import { useAppDispatch, useAppSelector } from '../../hooks/useReduxHooks';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { RecipePageForm } from '../../components/RecipePageForm';
-import { useEffect } from 'react';
+import { loadRecipe } from '../../slicers/SelectRecipeSlicer';
 
 function Recipe() {
 
@@ -14,16 +14,18 @@ function Recipe() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const recipeList = useAppSelector(state => state.recipes);
-  const {loading, error} = useAppSelector(state => state.selectRecipe);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     const selectedRecipe = recipeList.find(recipe => recipe.title.toLowerCase() === title?.toLowerCase());
     if (selectedRecipe) {
-      console.log(selectedRecipe);
       dispatch(loadRecipe(selectedRecipe));
+      setError(false);
     } else {
-      dispatch(loadError());
+      setError(true);
     }
+    setLoading(false)
   }, [recipeList])
 
   const handleSave = (recipe: RecipeInterface) => {
@@ -42,7 +44,7 @@ function Recipe() {
     return (
       <main id='recipe' className={`${error && 'error'}`}>
         <h2>Recipe Not Found!</h2>
-        <button onClick={() => navigate(-1)}>Return to Previous Page</button>
+        <button onClick={() => navigate('/')}>Return to Previous Page</button>
       </main>
     )
   }
