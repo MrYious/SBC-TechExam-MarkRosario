@@ -1,4 +1,5 @@
 import { Recipe, deleteRecipe } from '../slicers/RecipeSlicer';
+import { RecipeValidation, updateValidation } from '../slicers/SelectRecipeSlicer';
 import { Toast as ToastInterface, openToast } from "../slicers/ToastSlicer"
 import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
 
@@ -23,10 +24,10 @@ export const RecipePageForm = (props: RecipeFormProps) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        showValidations();
 
         var newToast: ToastInterface;
-
-        if(isAllInputValid(recipe)){
+        if(executeValidateAllInput(recipe)){
             props.handleSave(recipe)
             newToast = {
                 show: true,
@@ -52,9 +53,27 @@ export const RecipePageForm = (props: RecipeFormProps) => {
         navigate("/")
     }
 
-    function isAllInputValid(recipe: Recipe) {
+    const showValidations = () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var isValidEmail = emailRegex.test(recipe.email);
+
+        const newValidation: RecipeValidation = {
+            ...validation,
+            name: recipe.name ? 'Success' : 'Error',
+            email: recipe.email && isValidEmail ? 'Success' : 'Error',
+            title: recipe.title ? 'Success' : 'Error',
+            description: recipe.description ? 'Success' : 'Error',
+            ingredients: recipe.ingredients ? 'Success' : 'Error',
+            instructions: recipe.instructions ? 'Success' : 'Error',
+            // image: 'Initial',
+        }
+        dispatch(updateValidation(newValidation));
+    }
+
+    function executeValidateAllInput(recipe: Recipe) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var isValidEmail = emailRegex.test(recipe.email);
+
         if (
             !recipe.title
             || !recipe.name
