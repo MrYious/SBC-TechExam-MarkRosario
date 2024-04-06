@@ -7,8 +7,8 @@ export const NavBar = () => {
     return (
         <nav>
             {
-                location.pathname === "/" &&
-                <SearchBox />
+                location.pathname === "/"
+                && <SearchBox />
             }
         </nav>
     )

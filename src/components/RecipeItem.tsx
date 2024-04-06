@@ -33,10 +33,10 @@ export const RecipeItem = (props: {recipe: Recipe}) => {
                 {/* <img src={props.recipe.image || imgPlaceholder} alt="recipe image" id="cover" /> */}
                 <button onClick={(e)=>{handleToggleFavoriteRecipe(e, props.recipe.title)}}>
                     {
-                        favorite.list.find(title => title.toLowerCase() === props.recipe.title.toLowerCase()) ?
-                            <img src={iconStarFilled} alt="icon star filled " className='icon' />
-                        :
-                            <img src={iconStarOutlined} alt="icon star outlined" className='icon'/>
+                        favorite.list.find(title =>
+                            title.toLowerCase() === props.recipe.title.toLowerCase())
+                            ? <img src={iconStarFilled} alt="icon star filled " className='icon' />
+                            : <img src={iconStarOutlined} alt="icon star outlined" className='icon'/>
                     }
                 </button>
             </div>
