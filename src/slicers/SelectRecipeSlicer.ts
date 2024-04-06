@@ -23,7 +23,6 @@ const initialState: SelectRecipe = {
     error: false
 }
 
-
 const SelectRecipeSlicer =  createSlice({
     name: 'selectRecipe',
     initialState,
@@ -31,6 +30,7 @@ const SelectRecipeSlicer =  createSlice({
         loadRecipe: (state, action: PayloadAction<Recipe>) => {
             state.recipe = action.payload
             state.loading = false
+            state.error = false
         },
         loadError: (state) => {
             state.error = true
