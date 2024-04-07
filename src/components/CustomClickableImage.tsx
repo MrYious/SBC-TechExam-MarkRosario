@@ -1,17 +1,42 @@
+import { ChangeEvent, useRef } from 'react';
+
+import { Recipe } from '../slicers/RecipeSlicer';
 import imgPlaceholder from '../assets/placeholderImage.svg'
+import { updateSelectedRecipe } from '../slicers/SelectRecipeSlicer';
+import { useAppDispatch } from '../hooks/useReduxHooks';
 
-interface CustomClickableImageProps {
-    imagePath: string
-}
+export const CustomClickableImage = (props: {recipe: Recipe}) => {
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const dispatch = useAppDispatch();
 
-export const CustomClickableImage = (props: CustomClickableImageProps) => {
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = e.target.files?.[0];
+        if (selectedFile) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                const imageDataURL = reader.result as string;
+                dispatch(updateSelectedRecipe({...props.recipe, image: imageDataURL}))
+            };
+            reader.readAsDataURL(selectedFile);
+        }
+    };
+
+    const handleClickImage = () => {
+        fileInputRef.current?.click();
+    }
 
     return (
-        <button
-            type='button'
-            onClick={()=>{}}
-            id='recipeImageHolder'
-            style={{backgroundImage: `url('${props.imagePath || imgPlaceholder}')`}}
-        />
+        <div
+            id='recipeImageContainer'
+            onClick={handleClickImage}
+            style={{backgroundImage: `url('${props.recipe.image || imgPlaceholder}')`}}
+        >
+            <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                ref={fileInputRef}
+            />
+        </div>
     )
 }

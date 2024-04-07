@@ -44,6 +44,12 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 message: 'Error: Enter a unique title!',
                 type: 'ERROR'
             }
+        } else if(!recipe.image){
+            newToast = {
+                show: true,
+                message: 'Error: Select an image',
+                type: 'ERROR'
+            }
         } else {
             newToast = {
                 show: true,
@@ -94,6 +100,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
             && recipe.description
             && recipe.ingredients
             && recipe.instructions
+            && recipe.image
         ) {
             return true;
         }
@@ -114,7 +121,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 <img src={iconBackArrow} alt="icon back arrow" className="icon"/>
                 Back
             </button>
-            <CustomClickableImage imagePath={recipe.image}/>
+            <CustomClickableImage recipe={recipe}/>
         </section>
         <section id='rightInputContainer'>
             <CustomFormInput
