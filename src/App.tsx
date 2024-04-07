@@ -17,7 +17,6 @@ function App() {
     .catch((err) => console.log(err));
   }, [])
 
-
   return (
     <main className='app'>
       <NavBar />
