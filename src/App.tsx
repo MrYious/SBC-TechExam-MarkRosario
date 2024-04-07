@@ -13,10 +13,7 @@ function App() {
   useEffect(() => {
     fetch('/api/data.json')
     .then((res) => res.json())
-    .then((res) => {
-      console.log(res);
-      dispatch(loadRecipes(res));
-    })
+    .then((res) => dispatch(loadRecipes(res)))
     .catch((err) => console.log(err));
   }, [])
 
