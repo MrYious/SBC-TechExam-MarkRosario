@@ -3,12 +3,12 @@ import { RecipeValidation, updateValidation } from '../slicers/SelectRecipeSlice
 import { Toast as ToastInterface, openToast } from "../slicers/ToastSlicer"
 import { useAppDispatch, useAppSelector } from '../hooks/useReduxHooks';
 
+import { CustomClickableImage } from './CustomClickableImage';
 import { CustomFormButton } from './CustomFormButton';
 import { CustomFormInput } from './CustomFormInput';
 import { CustomFormTextArea } from './CustomFormTextArea';
 import { Toast } from './Toast';
 import iconBackArrow from '../assets/backArrow.svg';
-import imgPlaceholder from '../assets/placeholderImage.svg'
 import { useNavigate } from "react-router-dom";
 
 interface RecipeFormProps {
@@ -114,12 +114,7 @@ export const RecipePageForm = (props: RecipeFormProps) => {
                 <img src={iconBackArrow} alt="icon back arrow" className="icon"/>
                 Back
             </button>
-            <button
-                type='button'
-                onClick={()=>{}}
-                id='recipeImageHolder'
-                style={{backgroundImage: `url('${recipe.image || imgPlaceholder}')`}}
-            />
+            <CustomClickableImage imagePath={recipe.image}/>
         </section>
         <section id='rightInputContainer'>
             <CustomFormInput
